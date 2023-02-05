@@ -1,5 +1,5 @@
 #include<iostream>
-#include<cstdio>
+#include<cmath>
 using namespace std;
 
 float f(float a,float b,float c){
@@ -7,7 +7,7 @@ float f(float a,float b,float c){
 }
 
 int main(){
-    float a,b,c;
-    cin>>a>>b>>c;
-    cout<<f(a,b,c);
+    float a;
+    cin>>a;
+    cout<<sqrt(a);
 }

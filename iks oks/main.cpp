@@ -2,87 +2,87 @@
 
 using namespace std;
 
-
-void obrisiEkran(char niz[30][20],char c,int sirina,int visina){
-    for(int j=0;j<visina;j++){
-        for(int i=0;i<sirina;i++){
-            niz[i][j]=c;
+void inicijalizujTabelu(char tabela[3][3]){
+    for(int j=0;j<3;j++){
+        for(int i=0;i<3;i++){
+            tabela[i][j]=j*3+i+'0'+1;
         }
     }
 }
 
-void ispisiEkran(char niz[30][20],int sirina,int visina){
-    for(int j=0;j<visina;j++){
-        for(int i=0;i<sirina;i++){
+void potez(char tabela[3][3],char igrac){
+    int noviIndex=0;
+    while(!noviIndex){
+        int index;
+        cout<<"Unesite indeks polja: ";
+        cin>>index;
+        int x=(index-1)%3;
+        int y=(index-1)/3;
+        if(tabela[x][y]!='X' and tabela[x][y]!='Y'){
+            tabela[x][y]=igrac;
+            noviIndex=1;
+        } 
+    }
+}
 
-            char c=niz[i][j];
-            if(i==0 or i==sirina-1)c='|';
-            if(j==0 or j==visina-1)c='-';
-            if((i==0 or i==sirina-1) and (j==0 or j==visina-1))c='+';
-            
-            cout<<c<<" ";
-        
+void ispis(char tabela[3][3]){
+
+    for(int j=0;j<3;j++){
+        cout<<"+---+---+---+\n|";
+        for(int i=0;i<3;i++){
+            cout<<" "<<tabela[i][j]<<" |";
         }
         cout<<"\n";
     }
+    cout<<"+---+---+---+\n";
 }
 
-void nacrtajPravougaonik(char niz[30][20],char c,int x,int y,int sirina,int visina){
-    for(int j=y;j<y+visina;j++){
-        for(int i=x;i<x+sirina;i++){
-            niz[i][j]=c;
+int provera(char tabela[3][3]){
+    int gameOver=0;
+    for(int i=0;i<3;i++){
+        if(tabela[i][0]==tabela[i][1] and tabela[i][1]==tabela[i][2]){
+            gameOver=1;
+        }
+        if(tabela[0][i]==tabela[1][i] and tabela[1][i]==tabela[2][i]){
+            gameOver=1;
         }
     }
-}
-
-int abs(int a){
-    if(a>0){
-        return a;
-    }else{
-        return -a;
+    if(tabela[0][0]==tabela[1][1] and tabela[1][1]==tabela[2][2]){
+        gameOver=1;
     }
-}
-int max(int a,int b){
-    int m;
-    if(a>b){
-        m=a;
-    }else{
-        m=b;
+    if(tabela[2][0]==tabela[1][1] and tabela[1][1]==tabela[0][2]){
+        gameOver=1;
     }
-    return m;
-}
-
-void nacrtajLiniju(char niz[30][20],char c,int x1,int y1,int x2,int y2){
-    int razlikaX=x1-x2;
-    int razlikaY=y1-y2;
-    int d=max(abs(razlikaX),abs(razlikaY))+1;
-
-    for(int i=0;i<d;i++){
-        float a=i;
-        a/=d;
-        float x=a*x1+(1-a)*x2;
-        float y=a*y1+(1-a)*y2;
-        int indexX=x;
-        int indexY=y;
-        
-        niz[indexX][indexY]=c;
-    }
-}
-
-void nacrtajKrug(char niz[30][20],char c,int x,int y,int r,int sirina,int visina){
-
+    return gameOver;
 }
 
 int main(){
-    int sirina=30;
-    int visina=20;
-    char niz[30][20];
+    //setup
+    char tabela[3][3];
+    inicijalizujTabelu(tabela);
+    int gameOver=0;
+    char igrac='X';
+    
+    for(int i=0;i<9 and !gameOver;i++){
+        ispis(tabela);
+        potez(tabela,igrac);
+        gameOver=provera(tabela);
+        
+        if(igrac=='X')
+            igrac='O';
+        else
+            igrac='X';
+    }
 
-    obrisiEkran(niz,' ',sirina,visina);
+    ispis(tabela);
+    if(igrac=='X')
+        igrac='O';
+    else
+        igrac='X';
 
-    nacrtajPravougaonik(niz,'*',5,5,10,3);
-    nacrtajPravougaonik(niz,'*',25,5,3,10);
-    nacrtajLiniju(niz,'#',1,19,29,5);
-
-    ispisiEkran(niz,sirina,visina);
+    if(gameOver==0){
+        cout<<"Nereseno!!!\n";
+    }else{
+        cout<<"Pobedio je igrac: "<<igrac<<" !!!\n";
+    }
 }

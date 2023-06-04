@@ -1,0 +1,8 @@
+ime  prezime dan mesec godina skola
+6
+Pera Peric   11  12    2003   Ivo_Andric
+Zika Peric   7   7     2001   France_Presern
+Laza Lazic   13  11    2002   Neka_skola
+Pera Peric   11  12    2003   Ivo_Andric
+Zika Peric   7   7     2001   France_Presern
+Laza Lazic   13  11    2002   Neka_skola

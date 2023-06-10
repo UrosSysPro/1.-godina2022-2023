@@ -1,0 +1,143 @@
+1. Sta su promenljive
+    tipovi
+    deklaracija
+    inicijalizacija
+    primeri
+
+1. Reci koje se odnose na deo memorije gde se cuva neki podatak.
+    U zavistnosti od tipa podataka koje cuvaju
+    postoje int, char, float, double, long long... 
+    Deklaracija je prva pojava promenljive u programu, 
+    i tu joj dodeljujemo tip.
+    Inicijalizacija je prva dodela vrednosti promenljivoj.
+    primer: int a=1;
+
+
+2. sta su operatori?
+    neke podele operatora?
+    prioritet operatora?
+    sta je izraz?
+
+2. Operatori su znakovi koji predstavljaju matematicke operacije.
+    Podela po onome sto radi: 
+        aritmeticki(+ - * /)
+        uporedjivanje(< > >= <= == !=)
+        logicki( and or )
+        dodela vrednosti(= += -= *= /= ++ --)
+    podela po broju parametara:
+        unarni ++ -- 
+        binarni < > + - * / =
+
+    Izraz je skup operatora i promenljivih
+
+
+3. Sta je if, navedi sintakstu if-a.
+    Kada ce se izvrsiti prvi blok if-a, a kada drugi?
+    Kada koristimo if?
+    Primeri?
+
+    sintaksa:
+    if(izraz){
+        //blok ako je tacno
+    }else{
+        //blok ako je netacno
+    }
+
+    primeri:
+        
+        da li je char veliko slovo:
+
+        char a='A'
+        if(a>='A' and a<='Z'){
+            cout<<"jeste veliko slovo";
+        }else{
+            cout<<"nije veliko slovo";
+        }
+
+        provera da li je broj pozitivan:
+        int a=5;
+
+        if(a>0){
+            cout<<"a je pozitivan broj";
+        }else{
+            cout<<"a je negativan broj";
+        }
+
+        da li su dva broja deljiva:
+        int a=27,b=3;
+        
+        if(a%b==0){
+            cout<<"jesu deljivi";
+        }else{
+            cout<<"nisu deljivi";
+        }
+
+        ispisivanje veceg od dva broja:
+
+        int a=1,b=10;
+
+        if(a>b){
+            cout<<a;
+        }else{
+            cout<<b;
+        }
+
+        isti primer bez if-a:
+        cout<<(a>b)*a+(b>a)*b;
+
+
+4. Sta su petlje?
+    Navedi sintaksu za for i while.
+    Kada se koriste petlje?
+
+
+    Petlje se koriste da bi se neki deo koda ponovio vise puta.
+
+
+    for(inicijalizacija;uslov;korak){
+        //blok koda
+    }
+    for od 0 do 100:
+    for(int i=0;i<100;i++){
+
+    }
+
+    od -50 do 50:
+    for(int i=-50;i<50;i++){
+
+    }
+
+    parni brojevi od 0 do 100:
+    for(int i=0;i<=100;i+=2){}
+
+    stepeni broja 2 manji od 1000:
+    for(int i=1;i<1000;i*=2){}
+
+    neparni borjevi od 99 do 1:
+    for(int i=99;i>=1;i-=2)
+
+    svi karakteri od A do Z
+    for(char i='A';i<='Z';i++)
+
+    svi decimalni brojevi od 0 do 1
+    for(float i=0;i<1;i+=0.001)
+
+5. Sta su funkcije?
+    Kada se koriste?
+    Primeri funkcija koje smo radili?
+    Sintaksa funkcije?
+    Sta su parametri?
+    Sta su povratne vrednosti?
+
+
+    void f(){
+        cout<<"hello";
+    }
+    int saberi(int a,int b){
+        return a-b;
+    }
+
+    int main(){
+        f();
+        saberi(2,2);
+    }
